@@ -1,0 +1,161 @@
+:root {
+    --maintextcolor: #c9d1d9
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+@font-face {
+    font-family: SFMonoRegular;
+    font-style: normal;
+    font-weight: normal;
+    src: local('SF Mono Regular'), url('fonts/sfmono/SFMonoRegular.woff') format('woff');
+}
+
+@font-face {
+    font-family: SFProMedium;
+    src: url('fonts/sfpro/SFPRODISPLAYMEDIUM.OTF');
+}
+
+@font-face {
+    font-family: SFProBold;
+    src: url('fonts/sfpro/SFPRODISPLAYBOLD.OTF');
+}
+
+body {
+    margin: 0;
+    background-color: #131723;
+    color: #BBBBBB;
+}
+
+.header-name {
+    font-family: SFMonoRegular;
+    color: #c9d1d9;
+    font-size: 6em;
+    margin: 0;
+    padding: 0;
+    margin-bottom: -0.3em;
+}
+
+.header-desc {
+    font-family: SFProMedium;
+    font-size: 1.5em;
+}
+
+.header-div {
+    color: var(--maintextcolor);
+    text-align: center;
+}
+
+.h2-title {
+    font-family: SFMonoRegular;
+    color: #c9d1d9;
+    font-size: 3em;
+    margin: 0;
+    padding: 0;
+}
+
+.sfpro {
+    font-family: SFProMedium;
+}
+
+.t {
+    font-family: SFProBold;
+}
+
+.transition-fade-out {
+    opacity: 1;
+    transition: 500ms;
+    transform: translateX(0);
+}
+
+html.is-animating .transition-fade-out {
+    opacity: 1;
+    transform: translateY(-100%);
+}
+
+html.is-leaving .transition-fade-out {
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    background: rgb(22,27,34);
+    font-family: SFProBold;
+}
+
+header::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.home {
+    float: left;   
+    padding: 1rem 0; 
+}
+
+nav {
+    float: right;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 5rem;
+    padding-top: 1rem;
+
+    position: relative;
+}
+
+nav a, header a {
+    color: var(--maintextcolor);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+nav a:hover, header a:hover {
+    color: #a5b2c0;
+}
+
+nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    width: 100%;
+    background-color: var(--maintextcolor);
+
+    position: absolute;
+    top: 0;
+    width: 0%;
+
+    transition: all ease-in-out 200ms;
+}
+
+nav a:hover::before {
+    width: 100%;
+}
+
+.content-margin {
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+}
