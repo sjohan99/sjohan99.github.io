@@ -33,6 +33,7 @@ body {
     background-color: #131723;
     min-height: 100%;
     color: #BBBBBB;
+    overflow: hidden;
 }
 
 .header-name {
@@ -42,6 +43,7 @@ body {
     margin: 0;
     padding: 0;
     margin-bottom: -0.3em;
+    margin-top: 10rem;
 }
 
 .header-desc {
@@ -62,8 +64,16 @@ body {
     padding: 0;
 }
 
-.sfpro {
+.sub-category {
+    margin-top: 10rem;
+    font-family: SFMonoRegular;
+    color: #c9d1d9;
+    font-size: 6em;
+}
+
+.sub-category-content {
     font-family: SFProMedium;
+    font-size: 2rem;
 }
 
 .t {
@@ -72,7 +82,7 @@ body {
 
 .transition-fade-out {
     opacity: 1;
-    transition: 500ms;
+    transition: 350ms;
     transform: translateX(0);
 }
 
@@ -84,6 +94,48 @@ html.is-animating .transition-fade-out {
 html.is-leaving .transition-fade-out {
     opacity: 0;
     transform: translateY(100%);
+}
+
+.transition-down-up {
+    opacity: 1;
+    transition: 300ms;
+    transform: translateY(0);
+}
+
+html.is-animating .transition-down-up {
+    opacity: 1;
+    transform: translateY(-7rem);
+}
+
+html.is-leaving .transition-down-up{
+    opacity: 0;
+    transform: translateY(-7rem);
+}
+
+.transition-right {
+    transition: 500ms;
+    transform: translateX(0);
+}
+
+html.is-animating .transition-right {
+    transform: translateX(100%);
+}
+
+html.is-leaving .transition-right{
+    transform: translateX(-100%);
+}
+
+.transition-left {
+    transition: 500ms;
+    transform: translateX(0);
+}
+
+html.is-animating .transition-left {
+    transform: translateX(-100%);
+}
+
+html.is-leaving .transition-left{
+    transform: translateX(100%);
 }
 
 

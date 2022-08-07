@@ -1,4 +1,8 @@
+const options = {
+    containers: ["#swup", "#slide-right"]
+};
 const swup = new Swup()
+
 
 navigations = ['nav_home', 'nav_skills', 'nav_portfolio']
 nav_pos = 0
