@@ -5,6 +5,7 @@
 
 html {
     scroll-behavior: smooth;
+    background-color: #131723;
 }
 
 @font-face {
