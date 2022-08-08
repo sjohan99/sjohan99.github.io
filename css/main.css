@@ -39,7 +39,7 @@ body {
 .header-name {
     font-family: SFMonoRegular;
     color: #c9d1d9;
-    font-size: 6em;
+    font-size: 8vw;
     margin: 0;
     padding: 0;
     margin-bottom: -0.3em;
@@ -56,6 +56,15 @@ body {
     text-align: center;
 }
 
+.centered {
+    margin: 0 auto;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+}
+
 .h2-title {
     font-family: SFMonoRegular;
     color: #c9d1d9;
@@ -65,15 +74,17 @@ body {
 }
 
 .sub-category {
-    margin-top: 10rem;
+    margin-top: 8vh;
+    margin-bottom: 5vh;
     font-family: SFMonoRegular;
-    color: #c9d1d9;
-    font-size: 6em;
+    color: #f0f2f4;
+    font-size: 8vw;
 }
 
 .sub-category-content {
     font-family: SFProMedium;
-    font-size: 2rem;
+    color: #c9d1d9;
+    font-size: 3vw;
 }
 
 .t {
@@ -110,6 +121,22 @@ html.is-animating .transition-down-up {
 html.is-leaving .transition-down-up{
     opacity: 0;
     transform: translateY(-7rem);
+}
+
+.transition-up-down {
+    opacity: 1;
+    transition: 300ms;
+    transform: translateY(0);
+}
+
+html.is-animating .transition-up-down {
+    opacity: 1;
+    transform: translateY(50vh);
+}
+
+html.is-leaving .transition-up-down{
+    opacity: 0;
+    transform: translateY(50vh);
 }
 
 .transition-right {
