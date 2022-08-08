@@ -1,5 +1,7 @@
 :root {
-    --maintextcolor: #c9d1d9
+    --maintextcolor: #c9d1d9;
+    --maintextcolorhover: #a5b2c0;
+    --header-background: rgb(22,27,34);
 }
 
 
@@ -31,7 +33,7 @@ html {
 body {
     margin: 0;
     background-color: #131723;
-    min-height: 100%;
+    min-height: 50%;
     color: #BBBBBB;
     overflow-y: scroll;
     scrollbar-width: none; /* firefox */
@@ -41,21 +43,6 @@ body {
 body::-webkit-scrollbar {
     width: 0;
     height: 0;
-}
-
-.header-name {
-    font-family: SFMonoRegular;
-    color: #c9d1d9;
-    font-size: 8vw;
-    margin: 0;
-    padding: 0;
-    margin-bottom: -0.3em;
-    margin-top: 10rem;
-}
-
-.header-desc {
-    font-family: SFProMedium;
-    font-size: 1.5em;
 }
 
 .header-div {
@@ -81,7 +68,6 @@ body::-webkit-scrollbar {
 }
 
 .sub-category {
-    margin-top: 8vh;
     margin-bottom: 5vh;
     font-family: SFMonoRegular;
     color: #f0f2f4;
@@ -172,36 +158,34 @@ html.is-leaving .transition-left{
     transform: translateX(100%);
 }
 
-
-.sticky {
-    position: fixed;
-    top: 0;
+main {
+    margin-top: 15vh;
     width: 100%;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
 header {
-    background-color: rgb(22,27,34);
+    background: var(--header-background);
     font-family: SFProBold;
-}
-
-header::after {
-    content: '';
-    display: table;
-    clear: both;
-}
-
-.home {
-    float: left;   
-    padding: 1rem 0; 
+    text-align: center;
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 nav {
-    float: right;
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    left: 0;
+    background: var(--header-background);
+    width: 100%;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 250ms ease-in-out;
+    margin-bottom: 10em;
 }
 
 nav ul {
@@ -211,42 +195,137 @@ nav ul {
 }
 
 nav li {
-    display: inline-block;
-    margin-left: 5rem;
-    padding-top: 1rem;
+    margin-bottom: 1em;
+    margin-left: 1em;
+}
 
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    display: block;
+    background: white;
+    height: 2px;
+    width: 2em;
+    border-radius: 2px;
     position: relative;
 }
 
-nav a, header a {
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    content: '';
+    position: absolute;
+}
+
+
+.nav-toggle-label span::before {
+    bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+    top: 7px;
+}
+
+nav a {
     color: var(--maintextcolor);
     text-decoration: none;
     text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 125ms ease-in-out;
 }
 
-nav a:hover, header a:hover {
-    color: #a5b2c0;
+nav a:hover {
+    color: var(--maintextcolorhover);
 }
 
-nav a::before {
-    content: '';
-    display: block;
-    height: 5px;
-    width: 100%;
-    background-color: var(--maintextcolor);
-
-    position: absolute;
-    top: 0;
-    width: 0%;
-
-    transition: all ease-in-out 200ms;
+.nav-toggle:checked ~ nav {
+    transform: scale(1, 1);
 }
 
-nav a:hover::before {
-    width: 100%;
+.nav-toggle:checked ~ nav a {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
 }
 
 .content-margin {
     margin-top: 10rem;
     margin-bottom: 10rem;
+}
+
+.logo {
+    text-decoration: none;
+    color: var(--maintextcolor);
+    font-size: 2em;
+    text-transform: uppercase;
+}
+
+@media screen and (min-width: 1000px) {
+    .nav-toggle-label {
+        display: none;
+    }
+
+    header {
+        display: grid;
+        grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+    }
+
+    .logo {
+        grid-column: 2 / span 1;
+        text-decoration: none;
+        position: relative;
+    }
+
+    nav {
+        all: unset;
+        grid-column: 3 / 4;
+        color: white;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    nav ul {
+        display: flex;
+    }
+
+    nav li {
+        margin-left: 3em;
+        margin-bottom: 0;
+    }
+
+    nav a {
+        opacity: 1;
+        position: relative;
+    }
+
+    nav a::before {
+        content: '';
+        display: block;
+        height: 5px;
+        background: white;
+        position: absolute;
+        top: -135%;
+        left: 0;
+        right: 0;
+        transform: scale(0, 1);
+        transform-origin: left;
+        transition: transform ease-in-out 250ms;
+    }
+
+    nav a:hover::before {
+        transform: scale(1,1);
+    }
 }
